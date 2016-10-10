@@ -55,66 +55,72 @@
 	</div>
 
 	<div class="container">
-		<table id="example" class="display" style="font-size: 20px;" cellspacing="0" width="100%">
-	        <thead>
-	            <tr>
-	                <th>เลขทะเบียน</th>
-	                <th>รายละเอียด</th>
-	                <th>ผู้ยืม</th>
-	                <th align='right'>วันที่ยืม</th>
-	                <th align='left'>ปี</th>
-	                <th>สถานะ</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	        	<?php 
-	        	$sql = "SELECT * FROM lent_return";
-	        	mysql_query("SET NAMES utf8");
-	        	$query = mysql_query($sql);
+		<div class="col-md-10">
+			<table id="example" class="display" style="font-size: 20px;" cellspacing="0" width="100%">
+		        <thead>
+		            <tr>
+		                <th>เลขทะเบียน</th>
+		                <th>รายละเอียด</th>
+		                <th>ผู้ยืม</th>
+		                <th align='right'>วันที่ยืม</th>
+		                <th align='left'>ปี</th>
+		                <th>สถานะ</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<?php 
+		        	$sql = "SELECT * FROM lent_return";
+		        	mysql_query("SET NAMES utf8");
+		        	$query = mysql_query($sql);
 
-	        	while ($data = mysql_fetch_array($query)) {
-	        		if ($data['status'] == 0) {
-	        			$statusLent = 'รอการอนุมัติ';
-	        		} elseif ($data['status'] == 1) {
-	        			$statusLent = 'คืนแล้ว';
-	        		} else {
-	        			$statusLent = 'ยังไม่ได้คืน';
-	        		}
+		        	while ($data = mysql_fetch_array($query)) {
+		        		if ($data['status'] == 0) {
+		        			$statusLent = 'รอการอนุมัติ';
+		        		} elseif ($data['status'] == 1) {
+		        			$statusLent = 'คืนแล้ว';
+		        		} else {
+		        			$statusLent = 'ยังไม่ได้คืน';
+		        		}
 
-	        		$dateInput = date('j F Y', strtotime($data['date_lent']));
-					$explodeDate = explode(" ", $dateInput);
+		        		$dateInput = date('j F Y', strtotime($data['date_lent']));
+						$explodeDate = explode(" ", $dateInput);
 
-					switch($explodeDate[1]) {
-					    case "January": $month = "มกราคม"; break;
-					    case "February": $month = "กุมภาพันธ์"; break;
-					    case "March": $month = "มีนาคม"; break;
-					    case "April": $month = "เมษายน"; break;
-					    case "May": $month = "พฤษภาคม"; break;
-					    case "June": $month = "มิถุนายน"; break;
-					    case "July": $month = "กรกฎาคม"; break;
-					    case "August": $month = "สิงหาคม"; break;
-					    case "September": $month = "กันยายน"; break;
-					    case "October": $month = "ตุลาคม"; break;
-					    case "November": $month = "พฤศจิกายน"; break;
-					    case "December": $month = "ธันวาคม"; break;
-					}
+						switch($explodeDate[1]) {
+						    case "January": $month = "มกราคม"; break;
+						    case "February": $month = "กุมภาพันธ์"; break;
+						    case "March": $month = "มีนาคม"; break;
+						    case "April": $month = "เมษายน"; break;
+						    case "May": $month = "พฤษภาคม"; break;
+						    case "June": $month = "มิถุนายน"; break;
+						    case "July": $month = "กรกฎาคม"; break;
+						    case "August": $month = "สิงหาคม"; break;
+						    case "September": $month = "กันยายน"; break;
+						    case "October": $month = "ตุลาคม"; break;
+						    case "November": $month = "พฤศจิกายน"; break;
+						    case "December": $month = "ธันวาคม"; break;
+						}
 
-					$date = $explodeDate[0].' '.$month;
+						$date = $explodeDate[0].' '.$month;
 
-	        		echo "
-	        		<tr>
-		                <td>".$data['id_mda']."</td>
-		                <td>".$data['name_mda']."</td>
-		                <td>".$data['name_user']."</td>
-		                <td align='right'>".$date."</td>
-		                <td>".$data['year']."</td>
-		                <td><center>".$statusLent."</center></td>
-		            </tr>";
-	        	}
-	        	 ?>
-	            
-	        </tbody>
-	    </table>
+		        		echo "
+		        		<tr>
+			                <td>".$data['id_mda']."</td>
+			                <td>".$data['name_mda']."</td>
+			                <td>".$data['name_user']."</td>
+			                <td align='right'>".$date."</td>
+			                <td>".$data['year']."</td>
+			                <td><center>".$statusLent."</center></td>
+			            </tr>";
+		        	}
+		        	 ?>
+		            
+		        </tbody>
+		    </table>
+		</div>
+		<div class="col-md-2">
+			
+		</div>
+		
 	</div>
 
 </body>

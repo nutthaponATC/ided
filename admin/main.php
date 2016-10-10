@@ -42,9 +42,9 @@
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="public.php">กลับหน้าหลัก</a></li>
-						<li><a href="contact.php">เพิ่มข้อมูล</a></li>
-						<li><a href="contact.php">จัดการข้อมูล</a></li>
+						<li><a href="../index.php">กลับหน้าหลัก</a></li>
+						<li><a href="add.php">เพิ่มข้อมูล</a></li>
+						<li><a href="edit.php">จัดการข้อมูล</a></li>
 		            </ul>
 		        </div>
 		    </div>
