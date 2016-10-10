@@ -50,9 +50,9 @@
 		</div>
 	</div>
 
-	<form>
+	<form action="add_process.php" method="POST" name="form1">
 	<div class="container"> 
-		<div class="col-md-10">
+		<div class="col-md-9">
 			<h3>เพิ่มข้อมูล</h3>
 
 			<center><h4>ชนิด *</p></h4></center>
@@ -82,10 +82,10 @@
 			<br>
 			<input class="form-control" type="file" id="files" name="image">
 
-			<center><h4>การติดต่อขอใช้นวัตกรรม *</h4></center>
+			<center><h4>การติดต่อขอใช้นวัตกรรม</h4></center>
 			<input class="form-control" type="text" name="contack">
 
-			<center><h4>บทคัดย่อ *</h4></center>
+			<center><h4>บทคัดย่อ</h4></center>
 			<textarea class="form-control" name="abstract" style="width:100%; height:100%;" rows="4" cols="50"></textarea>	
 
 			<center><h4>ไฟล์แนบPDF</h4></center>
@@ -94,7 +94,7 @@
 			<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="เพิ่มข้อมูล">
 		</div>
 
-		<div class="col-md-2">
+		<div class="col-md-3">
 
 		</div>
 	</div>
