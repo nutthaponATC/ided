@@ -7,14 +7,17 @@ $idsearch = $_POST['idsearch'];
 $year = $_POST['year'];
 $name = $_POST['name'];
 $innovation = $_POST['innovation'];
-$image = $_POST['image'];
 $contack = $_POST['contack'];
 $abstract = $_POST['abstract'];
-$pdf = $_POST['pdf'];
 
 if (isset($number1) && $number1 != "" && isset($type) && $type != "" && isset($year) && $year != "") {
 	if(($_FILES["image"]["tmp_name"]) != "") {
 		$realname = $_FILES["image"]["name"];
+	} else {
+		$realname = NULL;
+	} ;
+	if(($_FILES["pdf"]["tmp_name"]) != "") {
+		$realname = $_FILES["pdf"]["name"];
 	} else {
 		$realname = NULL;
 	} ;
@@ -24,6 +27,9 @@ if (isset($number1) && $number1 != "" && isset($type) && $type != "" && isset($y
 	$query = mysql_query($sql);
 
 	if ($query) {
+		if(($_FILES["image"]["tmp_name"]) != "") {
+			copy($_FILES["image"]["tmp_name"],"image/".$_FILES["image"]["name"]);
+		}
 		if(($_FILES["image"]["tmp_name"]) != "") {
 			copy($_FILES["image"]["tmp_name"],"image/".$_FILES["image"]["name"]);
 		}
