@@ -50,7 +50,7 @@
 		</div>
 	</div>
 
-	<form action="add_process.php" method="POST" name="form1">
+	<form action="add_process.php" method="POST" name="form1" enctype="multipart/form-data">
 	<div class="container"> 
 		<div class="col-md-9">
 			<h3>เพิ่มข้อมูล</h3>

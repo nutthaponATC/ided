@@ -10,17 +10,28 @@ $innovation = $_POST['innovation'];
 $contack = $_POST['contack'];
 $abstract = $_POST['abstract'];
 
-echo $type." ".$idsearch." ".$year." ".$name." ".$innovation." ".$contack." ".$abstract;
-exit();
+// echo $type." ".$idsearch." ".$year." ".$name." ".$innovation." ".$contack." ".$abstract;
+// exit();
 
 if (isset($idsearch) && $idsearch != "" && isset($year) && $year != "" && isset($name) && $name != "" && isset($innovation) && $innovation != "") {
+
+	function generateRandomString($length = 20) {
+	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $randomString = '';
+	    for ($i = 0; $i < $length; $i++) {
+	        $randomString .= $characters[rand(0, $charactersLength - 1)];
+	    }
+	    return $randomString;
+	}
+
 	if(($_FILES["image"]["tmp_name"]) != "") {
-		$realname = $_FILES["image"]["name"];
+		$realname = generateRandomString().".png";
 	} else {
 		$realname = NULL;
 	} ;
 	if(($_FILES["pdf"]["tmp_name"]) != "") {
-		$realnamepdf = $_FILES["pdf"]["name"];
+		$realnamepdf = generateRandomString().".pdf";
 	} else {
 		$realnamepdf = NULL;
 	} ;
@@ -31,15 +42,15 @@ if (isset($idsearch) && $idsearch != "" && isset($year) && $year != "" && isset(
 
 	if ($query) {
 		if(($_FILES["image"]["tmp_name"]) != "") {
-			copy($_FILES["image"]["tmp_name"],"file/".$_FILES["image"]["name"]);
+			copy($_FILES["image"]["tmp_name"],"file/".$realname);
 		}
-		if(($_FILES["image"]["tmp_name"]) != "") {
-			copy($_FILES["pdf"]["tmp_name"],"file/".$_FILES["pdf"]["name"]);
+		if(($_FILES["pdf"]["tmp_name"]) != "") {
+			copy($_FILES["pdf"]["tmp_name"],"file/".$realnamepdf);
 		}
 
 		echo "<script language='javascript'>";
 		echo "alert('เพิ่มข้อมูลเรียบร้อย');";
-		echo "location='index.php';";
+		echo "location='edit.php';";
 		echo "</script>";
 	} else {
 		echo "<script language='javascript'>";
@@ -53,6 +64,5 @@ if (isset($idsearch) && $idsearch != "" && isset($year) && $year != "" && isset(
 	echo "alert('กรุณาป้อนข้อมูลอีกครั้ง');";
 	echo "location='add.php';";
 	echo "</script>";
-	
 }
  ?>

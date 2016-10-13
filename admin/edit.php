@@ -5,8 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <link rel="shortcut icon" href="icon.png"> -->
 
-	<!-- font -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"> -->
 
 	<link rel="stylesheet" href="style.css">
 	<!-- bootstrap -->
@@ -47,8 +45,9 @@
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="public.php">หน้าแรก</a></li>
-						<li><a href="contact.php">ค้นหาขั้นสูง</a></li>
+						<li><a href="../index.php">กลับหน้าหลัก</a></li>
+						<li><a href="add.php">เพิ่มข้อมูล</a></li>
+						<li><a href="edit.php">จัดการข้อมูล</a></li>
 		            </ul>
 		        </div>
 		    </div>
