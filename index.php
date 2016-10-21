@@ -1,3 +1,4 @@
+<?php include('admin/config.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +48,8 @@
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="public.php">หน้าแรก</a></li>
-						<li><a href="contact.php">ค้นหาขั้นสูง</a></li>
+						<li><a href="indes.php">หน้าแรก</a></li>
+						<li><a href="search.php">ค้นหาขั้นสูง</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -59,63 +60,63 @@
 		<img src="image/head2.png" style="width:100%;">
 	</div>
 
-	<div class="container" style="margin-top:10px;">
-		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);;">
+	<div class="container" style="margin-top:10px; height:900px;">
+		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px;">
 			<div class="col-md-10">
-				<table id="example" class="display" style="font-size: 20px;" cellspacing="0" width="100%">
+				<table id="example" class="display" style="font-size: 15px; padding-top:30px;" cellspacing="0" width="100%">
 			        <thead>
 			            <tr>
-			                <th>เลขทะเบียน</th>
-			                <th>รายละเอียด</th>
-			                <th>ผู้ยืม</th>
-			                <th align='right'>วันที่ยืม</th>
-			                <th align='left'>ปี</th>
-			                <th>สถานะ</th>
+			                <th width="170"><center>ลักษณะของนวัตกรรม</center></th>
+			                <th width="80" style="padding-bottom:45px;"><center>รหัสสืบค้น</center></th>
+			                <th width="70"><center>ปีที่ทำ</center></th>
+			                <th style="padding-bottom:45px;"><center>ชื่อเรื่องของนวัตกรรม/งานวิจัย</center></th>
+			                <th width="170" style="padding-bottom:45px;"><center>ชื่อผู้จัดทำ</center></th>
 			            </tr>
 			        </thead>
 			        <tbody>
 			        	<?php 
-			        	$sql = "SELECT * FROM lent_return";
+			        	$sql = "SELECT * FROM innovation";
 			        	mysql_query("SET NAMES utf8");
 			        	$query = mysql_query($sql);
 
 			        	while ($data = mysql_fetch_array($query)) {
-			        		if ($data['status'] == 0) {
-			        			$statusLent = 'รอการอนุมัติ';
-			        		} elseif ($data['status'] == 1) {
-			        			$statusLent = 'คืนแล้ว';
+			    //     		$dateInput = date('j F Y', strtotime($data['date_lent']));
+							// $explodeDate = explode(" ", $dateInput);
+
+							// switch($explodeDate[1]) {
+							//     case "January": $month = "มกราคม"; break;
+							//     case "February": $month = "กุมภาพันธ์"; break;
+							//     case "March": $month = "มีนาคม"; break;
+							//     case "April": $month = "เมษายน"; break;
+							//     case "May": $month = "พฤษภาคม"; break;
+							//     case "June": $month = "มิถุนายน"; break;
+							//     case "July": $month = "กรกฎาคม"; break;
+							//     case "August": $month = "สิงหาคม"; break;
+							//     case "September": $month = "กันยายน"; break;
+							//     case "October": $month = "ตุลาคม"; break;
+							//     case "November": $month = "พฤศจิกายน"; break;
+							//     case "December": $month = "ธันวาคม"; break;
+							// }
+
+							// $date = $explodeDate[0].' '.$month
+
+			        		if ($data['type'] == 1) {
+			        			$typeInnovation = "งานวิจัย";
+			        		} elseif ($data['type'] == 2) {
+			        			$typeInnovation = "วิทยานิพนธ์";
+			        		} elseif ($data['type'] == 3) {
+			        			$typeInnovation = "สื่อนวัตกรรม";
 			        		} else {
-			        			$statusLent = 'ยังไม่ได้คืน';
+			        			$typeInnovation = "สื่ออื่นๆ";
 			        		}
-
-			        		$dateInput = date('j F Y', strtotime($data['date_lent']));
-							$explodeDate = explode(" ", $dateInput);
-
-							switch($explodeDate[1]) {
-							    case "January": $month = "มกราคม"; break;
-							    case "February": $month = "กุมภาพันธ์"; break;
-							    case "March": $month = "มีนาคม"; break;
-							    case "April": $month = "เมษายน"; break;
-							    case "May": $month = "พฤษภาคม"; break;
-							    case "June": $month = "มิถุนายน"; break;
-							    case "July": $month = "กรกฎาคม"; break;
-							    case "August": $month = "สิงหาคม"; break;
-							    case "September": $month = "กันยายน"; break;
-							    case "October": $month = "ตุลาคม"; break;
-							    case "November": $month = "พฤศจิกายน"; break;
-							    case "December": $month = "ธันวาคม"; break;
-							}
-
-							$date = $explodeDate[0].' '.$month;
 
 			        		echo "
 			        		<tr>
-				                <td>".$data['id_mda']."</td>
-				                <td>".$data['name_mda']."</td>
-				                <td>".$data['name_user']."</td>
-				                <td align='right'>".$date."</td>
-				                <td>".$data['year']."</td>
-				                <td><center>".$statusLent."</center></td>
+				                <td>".$typeInnovation."</td>
+				                <td>".$data['idsearch']."</td>
+				                <td><center>".$data['year']."</center></td>
+				                <td>".$data['innovation']."</td>
+				                <td>".$data['name']."</td>
 				            </tr>";
 			        	}
 			        	 ?>
@@ -123,7 +124,7 @@
 			        </tbody>
 			    </table>
 			</div>
-			<div class="col-md-2" style="background-color:blue;">
+			<div class="col-md-2" style="background-color:blue; height:200px;">
 				<div>
 					<div style="float:left; width:50px;">
 						<img src="image/bgr_h2.png" style="margin-top:20px;">
@@ -153,25 +154,25 @@
 $(document).ready(function() {
 	//Filter Postion
 	$('#example').DataTable( {
-        "sDom": '<"top"f>rt<"bottom"p><"clear">'
+        "sDom": '<"top"f>t<"bottom"p><"clear">'
     } );
 
     //List Filter Year
     var table = $('#example').DataTable();
 
     table.columns().each( function ( colIdx ) {
-	    var select = $('<br><select><option value="">เลือกรายละเอียด</option></select>')
+	    var select = $('<select class="form-control"><option value="">เลือกชนิด</option></select>')
 	        .appendTo(
-	            table.column([1]).header()
+	            table.column([0]).header()
 	        )
 	        .on( 'change', function () {
 	            table
-	                .column([1])
+	                .column([0])
 	                .search( $(this).val() )
 	                .draw();
 	        } );
 	    table
-	        .column([1])
+	        .column([0])
 	        .cache( 'search' )
 	        .sort()
 	        .unique()
@@ -181,7 +182,7 @@ $(document).ready(function() {
 	} );
 
 	table.columns().each( function ( colIdx ) {
-	    var select = $('<select><option value="">เลือกผู้ยืม</option></select>')
+	    var select = $('<select class="form-control" style="width:100px;"><option value="">เลือกปี</option></select>')
 	        .appendTo(
 	            table.column([2]).header()
 	        )
@@ -193,40 +194,6 @@ $(document).ready(function() {
 	        } );
 	    table
 	        .column([2])
-	        .cache( 'search' )
-	        .sort()
-	        .unique()
-	        .each( function ( d ) {	       
-	            select.append( $('<option value="'+d+'">'+d+'</option>') );
-	        } );
-	} );
-
-	table.columns().each( function ( colIdx ) {
-	    var select = $('<br><select><option value="">เลือกเดือน</option><option value="มกราคม">มกราคม</option><option value="กุมภาพันธ์">กุมภาพันธ์</option><option value="มีนาคม">มีนาคม</option><option value="เมษายน">เมษายน</option><option value="พฤษภาคม">พฤษภาคม</option><option value="มิถุนายน">มิถุนายน</option><option value="กรกฎาคม">กรกฎาคม</option><option value="สิงหาคม">สิงหาคม</option><option value="กันยายน">กันยายน</option><option value="ตุลาคม">ตุลาคม</option><option value="พฤศจิกายน">พฤศจิกายน</option><option value="ธันวาคม">ธันวาคม</option></select>')
-	        .appendTo(
-	            table.column([3]).header()
-	        )
-	        .on( 'change', function () {
-	            table
-	                .column([3])
-	                .search( $(this).val() )
-	                .draw();
-	        } );
-	} );
-
-	table.columns().each( function ( colIdx ) {
-	    var select = $('<select><option value="">เลือกปี</option></select>')
-	        .appendTo(
-	            table.column([4]).header()
-	        )
-	        .on( 'change', function () {
-	            table
-	                .column([4])
-	                .search( $(this).val() )
-	                .draw();
-	        } );
-	    table
-	        .column([4])
 	        .cache( 'search' )
 	        .sort()
 	        .unique()
