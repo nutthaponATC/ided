@@ -80,26 +80,6 @@
 			        	$query = mysql_query($sql);
 
 			        	while ($data = mysql_fetch_array($query)) {
-			    //     		$dateInput = date('j F Y', strtotime($data['date_lent']));
-							// $explodeDate = explode(" ", $dateInput);
-
-							// switch($explodeDate[1]) {
-							//     case "January": $month = "มกราคม"; break;
-							//     case "February": $month = "กุมภาพันธ์"; break;
-							//     case "March": $month = "มีนาคม"; break;
-							//     case "April": $month = "เมษายน"; break;
-							//     case "May": $month = "พฤษภาคม"; break;
-							//     case "June": $month = "มิถุนายน"; break;
-							//     case "July": $month = "กรกฎาคม"; break;
-							//     case "August": $month = "สิงหาคม"; break;
-							//     case "September": $month = "กันยายน"; break;
-							//     case "October": $month = "ตุลาคม"; break;
-							//     case "November": $month = "พฤศจิกายน"; break;
-							//     case "December": $month = "ธันวาคม"; break;
-							// }
-
-							// $date = $explodeDate[0].' '.$month
-
 			        		if ($data['type'] == 1) {
 			        			$typeInnovation = "งานวิจัย";
 			        		} elseif ($data['type'] == 2) {
@@ -124,13 +104,33 @@
 			        </tbody>
 			    </table>
 			</div>
-			<div class="col-md-2" style="background-color:blue; height:200px;">
+
+			<?php 
+			$j = 1;
+			for ($i = 0; $i < 5; $i++) { 
+				$sql = "SELECT type FROM innovation WHERE type = $j;";
+				$query = mysql_query($sql);
+				$type[] = mysql_num_rows($query);
+				$j++;
+			}
+
+			$sql = "SELECT innovation FROM innovation WHERE 'date' = max(date);";
+			$query = mysql_query($sql);
+			$dataNew = mysql_fetch_array($query);
+			
+			 ?>
+
+			<div class="col-md-2" style="height:500px;">
 				<div>
 					<div style="float:left; width:50px;">
 						<img src="image/bgr_h2.png" style="margin-top:20px;">
 					</div>
 					<div style="float:left; width:100px;">
 						<h3>หมวดหมู่</h3>
+						<p>งานวิจัย (<?php echo $type[0]; ?>)</p>
+						<p>วิทยานิพนธ์ (<?php echo $type[1]; ?>)</p>
+						<p>สื่อนวัตกรรม (<?php echo $type[2]; ?>)</p>
+						<p>สื่ออื่นๆ (<?php echo $type[3]; ?>)</p>
 					</div>
 				</div>
 				<div>
@@ -139,6 +139,7 @@
 					</div>
 					<div style="float:left; width:100px;">
 						<h3>ล่าสุด</h3>
+						<p><?php echo $dataNew['innovation'] ?></p>
 					</div>
 				</div>
 			</div>

@@ -35,7 +35,10 @@ if (isset($idsearch) && $idsearch != "" && isset($year) && $year != "" && isset(
 	} else {
 		$realnamepdf = NULL;
 	} ;
-	$sql = "INSERT INTO `innovation` (`id`, `type`, `idsearch`, `year`, `name`, `innovation`, `image`, `contack`, `abstract`, `pdf`) VALUES (NULL, '$type', '$idsearch', '$year', '$name', '$innovation', '$realname', '$contack', '$abstract', '$realnamepdf');";
+
+	$date = date("Y/m/d");
+
+	$sql = "INSERT INTO `innovation` (`id`, `type`, `idsearch`, `year`, `name`, `innovation`, `image`, `contack`, `abstract`, `pdf`, `date`) VALUES (NULL, '$type', '$idsearch', '$year', '$name', '$innovation', '$realname', '$contack', '$abstract', '$realnamepdf', '$date');";
 
 	mysql_query("SET NAMES utf8");
 	$query = mysql_query($sql);
