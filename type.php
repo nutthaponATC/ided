@@ -1,4 +1,18 @@
-<?php include('admin/config.php'); ?>
+<?php 
+include('admin/config.php'); 
+$typeSearch = $_GET['type'];
+
+if ($typeSearch == 1) {
+	$typeSearchType = "งานวิจัย";
+} elseif ($typeSearch == 2) {
+	$typeSearchType = "วิทยานิพนธ์";
+} elseif ($typeSearch == 3) {
+	$typeSearchType = "สื่อนวัตกรรม";
+} else {
+	$typeSearchType = "สื่ออื่นๆ";
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,11 +76,12 @@
 
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
+			<h2 style="padding-left:20px; margin-top:-20px; color: rgba(249, 86, 11, 1);">หมวดหมู่ <?php echo $typeSearchType; ?></h2>
 			<div class="col-md-10">
 				<table id="example" class="display" style="font-size: 15px; padding-top:30px;" cellspacing="0" width="100%">
 			        <thead>
 			            <tr>
-			                <th width="170"><center>ลักษณะของนวัตกรรม</center></th>
+			                <th width="170" style="padding-bottom:45px;"><center>ลักษณะของนวัตกรรม</center></th>
 			                <th width="80" style="padding-bottom:45px;"><center>รหัสสืบค้น</center></th>
 			                <th width="70"><center>ปีที่ทำ</center></th>
 			                <th style="padding-bottom:45px;"><center>ชื่อเรื่องของนวัตกรรม/งานวิจัย</center></th>
@@ -75,7 +90,16 @@
 			        </thead>
 			        <tbody>
 			        	<?php 
-			        	$sql = "SELECT * FROM innovation WHERE status = 1";
+			        	if ($typeSearch == 1) {
+			        		$sql = "SELECT * FROM innovation WHERE type = 1 AND status = 1";
+			        	} elseif ($typeSearch == 2) {
+			        		$sql = "SELECT * FROM innovation WHERE type = 2 AND status = 1";
+			        	} elseif ($typeSearch == 3) {
+			        		$sql = "SELECT * FROM innovation WHERE type = 3 AND status = 1";
+			        	} else {
+			        		$sql = "SELECT * FROM innovation WHERE type = 4 AND status = 1";
+			        	}
+			        	
 			        	mysql_query("SET NAMES utf8");
 			        	$query = mysql_query($sql);
 
@@ -193,29 +217,13 @@ $(document).ready(function() {
         "sDom": '<"top"f>t<"bottom"p><"clear">'
     } );
 
+	$('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search" />' );
+    } );
+
     //List Filter Year
     var table = $('#example').DataTable();
-
-    table.columns().each( function ( colIdx ) {
-	    var select = $('<select class="form-control"><option value="">เลือกชนิด</option></select>')
-	        .appendTo(
-	            table.column([0]).header()
-	        )
-	        .on( 'change', function () {
-	            table
-	                .column([0])
-	                .search( $(this).val() )
-	                .draw();
-	        } );
-	    table
-	        .column([0])
-	        .cache( 'search' )
-	        .sort()
-	        .unique()
-	        .each( function ( d ) {	       
-	            select.append( $('<option value="'+d+'">'+d+'</option>') );
-	        } );
-	} );
 
 	table.columns().each( function ( colIdx ) {
 	    var select = $('<select class="form-control" style="width:100px;"><option value="">เลือกปี</option></select>')
