@@ -1,4 +1,7 @@
-<?php include('admin/config.php'); ?>
+<?php 
+include('admin/config.php'); 
+$id_inno = $_GET['id_inno'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,46 +65,35 @@
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
 			<div class="col-md-10">
-				<table id="example" class="display" style="font-size: 15px; padding-top:30px;" cellspacing="0" width="100%">
-			        <thead>
-			            <tr>
-			                <th width="170"><center>ลักษณะของนวัตกรรม</center></th>
-			                <th width="80" style="padding-bottom:45px;"><center>รหัสสืบค้น</center></th>
-			                <th width="70"><center>ปีที่ทำ</center></th>
-			                <th style="padding-bottom:45px;"><center>ชื่อเรื่องของนวัตกรรม/งานวิจัย</center></th>
-			                <th width="170" style="padding-bottom:45px;"><center>ชื่อผู้จัดทำ</center></th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			        	<?php 
-			        	$sql = "SELECT * FROM innovation WHERE status = 1";
-			        	mysql_query("SET NAMES utf8");
-			        	$query = mysql_query($sql);
+				<?php 
+				$sql = "SELECT * FROM innovation WHERE id = $id_inno;";
+				mysql_query("SET NAMES utf8");
+				$query = mysql_query($sql);
+				$data = mysql_fetch_array($query);
+				 ?>
 
-			        	while ($data = mysql_fetch_array($query)) {
-			        		if ($data['type'] == 1) {
-			        			$typeInnovation = "งานวิจัย";
-			        		} elseif ($data['type'] == 2) {
-			        			$typeInnovation = "วิทยานิพนธ์";
-			        		} elseif ($data['type'] == 3) {
-			        			$typeInnovation = "สื่อนวัตกรรม";
-			        		} else {
-			        			$typeInnovation = "สื่ออื่นๆ";
-			        		}
+				<div class="col-md-5">
+					<img src="admin/file/<?php echo $data['image']; ?>" width="100%" class="thumbnail">
+				</div>
+				<div class="col-md-7">
+					<div class="col-md-3">
+						<h4>ชื่อนวัตกรรม</h4>
+					</div>	
+					<div class="col-md-9">
+						<h4><?php echo $data['innovation']; ?></h4>
+					</div>	
+					<div class="col-md-3">
+						<h4>ชื่อผู้จัดทำ</h4>
+					</div>	
+					<div class="col-md-9">
+						<h4><?php echo $data['name']; ?></h4>
+					</div>	
+					<div class="col-md-12">
+					</div>
 
-			        		echo "
-			        		<tr>
-				                <td>".$typeInnovation."</td>
-				                <td>".$data['idsearch']."</td>
-				                <td><center>".$data['year']."</center></td>
-				                <td>".$data['innovation']."</td>
-				                <td>".$data['name']."</td>
-				            </tr>";
-			        	}
-			        	 ?>
-			            
-			        </tbody>
-			    </table>
+				</div>
+
+
 			</div>
 
 			<?php 
@@ -117,6 +109,7 @@
 			$query = mysql_query($sql);
 			$idNew = mysql_fetch_array($query);
 			$sql = "SELECT *  FROM `innovation` WHERE id = $idNew[0];";
+			mysql_query("SET NAMES utf8");
 			$query = mysql_query($sql);
 			$dataNew = mysql_fetch_array($query);
 			
@@ -192,29 +185,13 @@ $(document).ready(function() {
         "sDom": '<"top"f>t<"bottom"p><"clear">'
     } );
 
+	$('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search" />' );
+    } );
+
     //List Filter Year
     var table = $('#example').DataTable();
-
-    table.columns().each( function ( colIdx ) {
-	    var select = $('<select class="form-control"><option value="">เลือกชนิด</option></select>')
-	        .appendTo(
-	            table.column([0]).header()
-	        )
-	        .on( 'change', function () {
-	            table
-	                .column([0])
-	                .search( $(this).val() )
-	                .draw();
-	        } );
-	    table
-	        .column([0])
-	        .cache( 'search' )
-	        .sort()
-	        .unique()
-	        .each( function ( d ) {	       
-	            select.append( $('<option value="'+d+'">'+d+'</option>') );
-	        } );
-	} );
 
 	table.columns().each( function ( colIdx ) {
 	    var select = $('<select class="form-control" style="width:100px;"><option value="">เลือกปี</option></select>')

@@ -62,8 +62,7 @@ if ($typeSearch == 1) {
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="indes.php">หน้าแรก</a></li>
-						<li><a href="search.php">ค้นหาขั้นสูง</a></li>
+						<li><a href="index.php">หน้าแรก</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -177,7 +176,7 @@ if ($typeSearch == 1) {
 					</div>
 					<div style="float:left; width:100px;">
 						<h3>ล่าสุด</h3>
-						<p><?php echo $dataNew['innovation']; ?></p>
+						<a href="detail.php?id_inno=<?php echo $idNew[0]; ?>"><p><?php echo $dataNew['innovation']; ?></p></a>
 					</div>
 				</div>
 			</div>
