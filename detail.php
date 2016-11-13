@@ -64,7 +64,7 @@ $id_inno = $_GET['id_inno'];
 
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
-			<div class="col-md-10">
+			<div class="col-md-10" style="font-size: 120%;">
 				<?php 
 				$sql = "SELECT * FROM innovation WHERE id = $id_inno;";
 				mysql_query("SET NAMES utf8");
@@ -73,24 +73,83 @@ $id_inno = $_GET['id_inno'];
 				 ?>
 
 				<div class="col-md-5">
-					<img src="admin/file/<?php echo $data['image']; ?>" width="100%" class="thumbnail">
+					<?php 
+					if ($data['image'] == "") {
+						echo "<i class='fa fa-picture-o' style='font-size:300px;' aria-hidden='true'></i>";
+					} else {
+						echo "<img src='admin/file/".$data['image']."' height='250px' width='100%' class='thumbnail'>";
+					}
+
+					 ?>
+					
 				</div>
 				<div class="col-md-7">
-					<div class="col-md-3">
-						<h4>ชื่อนวัตกรรม</h4>
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px;">
+						ชื่อนวัตกรรม
 					</div>	
-					<div class="col-md-9">
-						<h4><?php echo $data['innovation']; ?></h4>
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px;">
+						<?php echo $data['innovation']; ?>
 					</div>	
-					<div class="col-md-3">
-						<h4>ชื่อผู้จัดทำ</h4>
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						ชื่อผู้จัดทำ
 					</div>	
-					<div class="col-md-9">
-						<h4><?php echo $data['name']; ?></h4>
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						<?php echo $data['name']; ?>
 					</div>	
-					<div class="col-md-12">
-					</div>
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						ปีที่จัดทำ
+					</div>	
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						<?php echo $data['year']; ?>
+					</div>	
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						รหัสสืบค้น
+					</div>	
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						<?php echo $data['idsearch']; ?>
+					</div>	
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						ชนิด
+					</div>	
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						<?php 
+						if ($data['type'] == 1) {
+							$typeDetail = "งานวิจัย";
+						} elseif ($data['type'] == 2) {
+							$typeDetail = "วิทยานิพนธ์";
+						} elseif ($data['type'] == 3) {
+							$typeDetail = "สื่อนวัตกรรม";
+						} else {
+							$typeDetail = "สื่ออื่นๆ";
+						}
+						 ?>
 
+						<?php echo $typeDetail; ?>
+					</div>	
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						ไฟล์ pdf
+					</div>	
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						<?php 
+						if ($data['pdf'] == "") {
+							echo "-";
+						} else {
+							echo "<a href='admin/file/".$data['pdf']."' download><i class='fa fa-file-o' aria-hidden='true'></i> ".$data['pdf']."</a>";
+						}
+
+						 ?>
+					</div>	
+					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						การติดต่อขอใช้นวัตกรรม
+					</div>	
+					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+						<?php echo $data['contack']; ?>
+					</div>	
+
+				</div>
+				<div class="col-md-12" style="margin-top:50px; padding-top:20px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+					<center><h3>บทคัดย่อ</h3></center>
+					<p style="text-indent:20px;"> <?php echo $data['abstract']; ?></p>
 				</div>
 
 
