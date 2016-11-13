@@ -90,7 +90,7 @@
 			        		}
 
 			        		echo "
-			        		<tr>
+			        		<tr style='cursor:pointer;' data-href='detail.php?id_inno=".$data['id']."'>
 				                <td>".$typeInnovation."</td>
 				                <td>".$data['idsearch']."</td>
 				                <td><center>".$data['year']."</center></td>
@@ -238,4 +238,10 @@ $(document).ready(function() {
 	} );
 
 } );
+
+jQuery(document).ready(function($) {
+    $('#example').on( 'click', 'tbody tr', function () {
+        window.document.location = $(this).data("href");
+    });
+});
 </script>

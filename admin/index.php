@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="shortcut icon" href="icon.png"> -->
+
+	<!-- font -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"> -->
+
+	<link rel="stylesheet" href="../style.css">
 	<!-- bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	<!-- fa -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+	<title>ข้อมูลนวัตกรรมทางการศึกษา</title>
 
-	<link href="https://fonts.googleapis.com/css?family=Athiti:400" rel="stylesheet">
+	<!-- datatable -->
+	<script src="datatable/jquery-1.12.0.min.js"></script>      
+	<script type="text/javascript" src="datatable/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" href="datatable/jquery.dataTables.min.css" />  
 </head>
 <body>
 	<div class="container container-table">
 	    <div class="row vertical-center-row">
-	        <div class="text-center col-md-4 col-md-offset-4" style="background-color:#b3b3cc; padding-top:40px; padding-bottom:40px; border-radius: 25px;">
+	    	<center><h1 style="font-size: 450%; font-style: italic; color: rgba(249, 86, 11, 1);">ข้อมูลนวัตกรรมทางการศึกษา</h1>
+			<h3 style="font-style: italic; margin-top:10px; color: rgba(249, 86, 11, 1);">ระบบฐานข้อมูลการบริหารจัดการข้อมูลนวัตกรรมทางการศึกษา</h3></center>
+	        <div class="text-center col-md-4 col-md-offset-4" style="background-color: rgba(249, 86, 11, 1); color:#ffffff; padding-top:40px; padding-bottom:40px; border-radius: 25px;">
 	        	<form action="login.php" method="POST" name="form1">
 					<table>
 						<tr>
