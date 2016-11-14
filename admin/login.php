@@ -6,9 +6,13 @@ echo "<meta charset='utf-8'>";
 
 $user = $_POST['user'];
 $pass = $_POST['pass'];
+$usernameArray[0] = explode("'", $user);
+$passwordArray[0] = explode("'", $pass);
+$username = implode("|",$usernameArray[0]);
+$password = implode("|",$passwordArray[0]);
 
 if (isset($user) && $user != "" && isset($pass) && $pass != "") {
-	$sql = "SELECT * FROM user WHERE username = '$user' and password = '$pass'";
+	$sql = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
 	$query = mysql_query($sql);
 	$countCheck = mysql_num_rows($query);
 	$fetchData = mysql_fetch_array($query);

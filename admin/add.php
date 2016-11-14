@@ -50,7 +50,7 @@
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
 						<li><a href="../index.php">กลับหน้าหลัก</a></li>
 						<li><a href="add.php">เพิ่มข้อมูล</a></li>
-						<li><a href="edit.php">จัดการข้อมูล</a></li>
+						<li><a href="main.php">จัดการข้อมูล</a></li>
 		            </ul>
 		        </div>
 		    </div>

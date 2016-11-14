@@ -90,25 +90,25 @@ $id_inno = $_GET['id_inno'];
 						ชื่อนวัตกรรม
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px;">
-						<textarea class="form-control" name="abstract" style="width:100%; height:100%;" rows="4" cols="50"><?php echo $data['innovation']; ?></textarea>
+						<?php echo $data['innovation']; ?>
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ชื่อผู้จัดทำ
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['name']; ?>">
+						<?php echo $data['name']; ?>
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ปีที่จัดทำ
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['year']; ?>">
+						<?php echo $data['year']; ?>
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						รหัสสืบค้น
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['idsearch']; ?>">
+						<?php echo $data['idsearch']; ?>
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ชนิด
@@ -125,7 +125,8 @@ $id_inno = $_GET['id_inno'];
 							$typeDetail = "สื่ออื่นๆ";
 						}
 						 ?>
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['$typeDetail']; ?>">
+
+						<?php echo $typeDetail; ?>
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ไฟล์ pdf
