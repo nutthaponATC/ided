@@ -125,7 +125,7 @@ $id_inno = $_GET['id_inno'];
 							$typeDetail = "สื่ออื่นๆ";
 						}
 						 ?>
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['$typeDetail']; ?>">
+						<input class="form-control" type="text" name="innovation" value="<?php echo $typeDetail; ?>">
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ไฟล์ pdf
@@ -138,21 +138,26 @@ $id_inno = $_GET['id_inno'];
 							echo "<a href='admin/file/".$data['pdf']."' download><i class='fa fa-file-o' aria-hidden='true'></i> ".$data['pdf']."</a>";
 						}
 
-						 ?>
+						?>
+						<input class="form-control" type="file" id="pdf" name="pdf">
+						
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						การติดต่อขอใช้นวัตกรรม
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<?php echo $data['contack']; ?>
+						<input class="form-control" type="text" name="innovation" value="<?php echo $data['contack']; ?>">
 					</div>	
 
 				</div>
 				<div class="col-md-12" style="margin-top:50px; padding-top:20px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 					<center><h3>บทคัดย่อ</h3></center>
-					<p style="text-indent:20px;"> <?php echo $data['abstract']; ?></p>
+					<textarea class="form-control" name="abstract" style="width:100%; height:100%;" rows="20" cols="50"><?php echo $data['abstract']; ?></textarea>
 				</div>
-
+				<div class="col-md-12" style="margin-top:50px; padding-top:20px;">
+					<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="บันทึกการแก้ไข">
+					<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="ย้อนกลับ">
+				</div>
 
 			</div>
 
