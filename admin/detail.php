@@ -1,5 +1,13 @@
 <?php 
 include('config.php'); 
+session_start();
+
+if (empty($_SESSION['name_user'])) {
+	echo "<script language='javascript'>";
+	echo "location='index.php';";
+	echo "</script>";
+}
+
 $id_inno = $_GET['id_inno'];
 ?>
 <!DOCTYPE html>
@@ -51,9 +59,9 @@ $id_inno = $_GET['id_inno'];
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="../index.php">กลับหน้าหลัก</a></li>
+						<li><a href="main.php">จัดการข้อมูล</a></li>
 						<li><a href="add.php">เพิ่มข้อมูล</a></li>
-						<li><a href="edit.php">จัดการข้อมูล</a></li>
+						<li><a href="../index.php">กลับหน้าหลัก</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -154,6 +162,15 @@ $id_inno = $_GET['id_inno'];
 					<p style="text-indent:20px;"> <?php echo $data['abstract']; ?></p>
 				</div>
 
+				<div class="col-md-12" style="margin-top:50px; padding-top:20px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
+					<div class="col-md-11">
+						<a href='edit.php?id_inno=<?php echo $data['id']; ?>'><input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="button" value="แก้ไข"></a>
+						<a href="main.php"><input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="button" name="back" value="ย้อนกลับ"></a>
+					</div>
+					<div class="col-md-1">
+						<a href='remove.php?id_inno=<?php echo $data['id']; ?>'><input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="button" name="back" value="ลบ"></a>
+					</div>
+				</div>
 
 			</div>
 

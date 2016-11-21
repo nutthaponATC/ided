@@ -1,6 +1,15 @@
 <?php 
 include('config.php'); 
 $id_inno = $_GET['id_inno'];
+
+session_start();
+
+if (empty($_SESSION['name_user'])) {
+	echo "<script language='javascript'>";
+	echo "location='index.php';";
+	echo "</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,9 +60,9 @@ $id_inno = $_GET['id_inno'];
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="../index.php">กลับหน้าหลัก</a></li>
+						<li><a href="main.php">จัดการข้อมูล</a></li>
 						<li><a href="add.php">เพิ่มข้อมูล</a></li>
-						<li><a href="edit.php">จัดการข้อมูล</a></li>
+						<li><a href="../index.php">กลับหน้าหลัก</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -67,6 +76,7 @@ $id_inno = $_GET['id_inno'];
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
 			<div class="col-md-10" style="font-size: 120%;">
+				<form action="edit_process.php" method="post" enctype="multipart/form-data">
 				<?php 
 				$sql = "SELECT * FROM innovation WHERE id = $id_inno;";
 				mysql_query("SET NAMES utf8");
@@ -79,36 +89,38 @@ $id_inno = $_GET['id_inno'];
 					if ($data['image'] == "") {
 						echo "<i class='fa fa-picture-o' style='font-size:300px;' aria-hidden='true'></i>";
 					} else {
-						echo "<img src='file/".$data['image']."' height='250px' width='100%' class='thumbnail'>";
+						echo "<img src='file/".$data['image']."' id='image' height='250px' width='100%' class='thumbnail'>";
 					}
 
 					 ?>
+					<input class="form-control" type="file" id="files" name="image">
 					
 				</div>
 				<div class="col-md-7">
+					<input class="form-control" type="hidden" name="id_innovation" value="<?php echo $data['id']; ?>">
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px;">
 						ชื่อนวัตกรรม
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px;">
-						<textarea class="form-control" name="abstract" style="width:100%; height:100%;" rows="4" cols="50"><?php echo $data['innovation']; ?></textarea>
+						<textarea class="form-control" name="innovation" style="width:100%; height:100%;" rows="4" cols="50"><?php echo $data['innovation']; ?></textarea>
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ชื่อผู้จัดทำ
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['name']; ?>">
+						<input class="form-control" type="text" name="name" value="<?php echo $data['name']; ?>">
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ปีที่จัดทำ
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['year']; ?>">
+						<input class="form-control" type="text" name="year" value="<?php echo $data['year']; ?>">
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						รหัสสืบค้น
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['idsearch']; ?>">
+						<input class="form-control" type="text" name="idsearch" value="<?php echo $data['idsearch']; ?>">
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ชนิด
@@ -116,16 +128,36 @@ $id_inno = $_GET['id_inno'];
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						<?php 
 						if ($data['type'] == 1) {
-							$typeDetail = "งานวิจัย";
+							echo "<select class='form-control' name='type'>";
+								echo "<option value='1' selected>งานวิจัย</option>";
+								echo "<option value='2'>วิทยานิพนธ์</option>";
+								echo "<option value='3'>สื่อนวัตกรรม</option>";
+								echo "<option value='4'>สื่ออื่นๆ</option>";
+							echo "</select>";
 						} elseif ($data['type'] == 2) {
-							$typeDetail = "วิทยานิพนธ์";
+							echo "<select class='form-control' name='type'>";
+								echo "<option value='1'>งานวิจัย</option>";
+								echo "<option value='2' selected>วิทยานิพนธ์</option>";
+								echo "<option value='3'>สื่อนวัตกรรม</option>";
+								echo "<option value='4'>สื่ออื่นๆ</option>";
+							echo "</select>";
 						} elseif ($data['type'] == 3) {
-							$typeDetail = "สื่อนวัตกรรม";
+							echo "<select class='form-control' name='type'>";
+								echo "<option value='1'>งานวิจัย</option>";
+								echo "<option value='2'>วิทยานิพนธ์</option>";
+								echo "<option value='3' selected>สื่อนวัตกรรม</option>";
+								echo "<option value='4'>สื่ออื่นๆ</option>";
+							echo "</select>";
 						} else {
-							$typeDetail = "สื่ออื่นๆ";
+							echo "<select class='form-control' name='type'>";
+								echo "<option value='1'>งานวิจัย</option>";
+								echo "<option value='2'>วิทยานิพนธ์</option>";
+								echo "<option value='3'>สื่อนวัตกรรม</option>";
+								echo "<option value='4' selected>สื่ออื่นๆ</option>";
+							echo "</select>";
 						}
 						 ?>
-						<input class="form-control" type="text" name="innovation" value="<?php echo $typeDetail; ?>">
+						
 					</div>	
 					<div class="col-md-3" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
 						ไฟล์ pdf
@@ -146,7 +178,7 @@ $id_inno = $_GET['id_inno'];
 						การติดต่อขอใช้นวัตกรรม
 					</div>	
 					<div class="col-md-9" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(0, 0, 0, 0.3); ">
-						<input class="form-control" type="text" name="innovation" value="<?php echo $data['contack']; ?>">
+						<input class="form-control" type="text" name="contack" value="<?php echo $data['contack']; ?>">
 					</div>	
 
 				</div>
@@ -155,10 +187,15 @@ $id_inno = $_GET['id_inno'];
 					<textarea class="form-control" name="abstract" style="width:100%; height:100%;" rows="20" cols="50"><?php echo $data['abstract']; ?></textarea>
 				</div>
 				<div class="col-md-12" style="margin-top:50px; padding-top:20px;">
-					<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="บันทึกการแก้ไข">
-					<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="ย้อนกลับ">
+					<div class="col-md-11">
+						<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="บันทึกการแก้ไข">
+						<a href="main.php"><input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="button" name="back" value="ย้อนกลับ"></a>
+					</div>
+					<div class="col-md-1">
+						<a href='remove.php?id_inno=<?php echo $data['id']; ?>'><input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="button" name="back" value="ลบ"></a>
+					</div>
 				</div>
-
+				</form>
 			</div>
 
 			<?php 
@@ -280,4 +317,12 @@ $(document).ready(function() {
 	} );
 
 } );
+
+	document.getElementById("files").onchange = function () {
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	        document.getElementById("image").src = e.target.result;
+	    };
+	    reader.readAsDataURL(this.files[0]);
+	};
 </script>

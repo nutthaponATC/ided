@@ -10,9 +10,6 @@ $innovation = $_POST['innovation'];
 $contack = $_POST['contack'];
 $abstract = $_POST['abstract'];
 
-// echo $type." ".$idsearch." ".$year." ".$name." ".$innovation." ".$contack." ".$abstract;
-// exit();
-
 if (isset($idsearch) && $idsearch != "" && isset($year) && $year != "" && isset($name) && $name != "" && isset($innovation) && $innovation != "") {
 
 	function generateRandomString($length = 20) {
@@ -53,7 +50,7 @@ if (isset($idsearch) && $idsearch != "" && isset($year) && $year != "" && isset(
 
 		echo "<script language='javascript'>";
 		echo "alert('เพิ่มข้อมูลเรียบร้อย');";
-		echo "location='edit.php';";
+		echo "location='main.php';";
 		echo "</script>";
 	} else {
 		echo "<script language='javascript'>";

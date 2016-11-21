@@ -1,4 +1,14 @@
-<?php include('config.php'); ?>
+<?php 
+include('config.php'); 
+session_start();
+
+if (empty($_SESSION['name_user'])) {
+	echo "<script language='javascript'>";
+	echo "location='index.php';";
+	echo "</script>";
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,9 +58,9 @@
 		        </div>
 		        <div class="collapse navbar-collapse navbar-menubuilder">
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
-						<li><a href="../index.php">กลับหน้าหลัก</a></li>
-						<li><a href="add.php">เพิ่มข้อมูล</a></li>
 						<li><a href="main.php">จัดการข้อมูล</a></li>
+						<li><a href="add.php">เพิ่มข้อมูล</a></li>
+						<li><a href="../index.php">กลับหน้าหลัก</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -63,6 +73,7 @@
 
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
+			<form action="add_process.php" method="post" enctype="multipart/form-data">
 			<div class="col-md-10">
 				<h3>เพิ่มข้อมูล</h3>
 
@@ -102,8 +113,12 @@
 				<center><h4>ไฟล์แนบPDF</h4></center>
 				<input class="form-control" type="file" id="pdf" name="pdf">
 
+				<div class="col-md-12" style="margin-top:30px;"> 
 				<input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="submit" name="submit" value="เพิ่มข้อมูล">
+				<a href="main.php"><input id="bt" class="btn btn-default" style="margin-top:10px; background-color:black; color:white;" type="button" name="back" value="ย้อนกลับ"></a>
+				</div>
 			</div>
+			</form>
 
 			<?php 
 			$j = 1;
@@ -184,3 +199,12 @@
 
 </body>
 </html>
+<script language='javascript'>
+	document.getElementById("files").onchange = function () {
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	        document.getElementById("image").src = e.target.result;
+	    };
+	    reader.readAsDataURL(this.files[0]);
+	};
+</script>

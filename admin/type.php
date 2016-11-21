@@ -1,10 +1,15 @@
-<?php include('config.php'); 
-session_start();
+<?php 
+include('config.php'); 
+$typeSearch = $_GET['type'];
 
-if (empty($_SESSION['name_user'])) {
-	echo "<script language='javascript'>";
-	echo "location='index.php';";
-	echo "</script>";
+if ($typeSearch == 1) {
+	$typeSearchType = "งานวิจัย";
+} elseif ($typeSearch == 2) {
+	$typeSearchType = "วิทยานิพนธ์";
+} elseif ($typeSearch == 3) {
+	$typeSearchType = "สื่อนวัตกรรม";
+} else {
+	$typeSearchType = "สื่ออื่นๆ";
 }
 
 ?>
@@ -18,7 +23,7 @@ if (empty($_SESSION['name_user'])) {
 	<!-- font -->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"> -->
 
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="style.css">
 	<!-- bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -44,7 +49,7 @@ if (empty($_SESSION['name_user'])) {
 	</div>
 
 	<div class="container">
-		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; margin-left:-5px; width:100%+20px;" role="navigation">
+		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px;" role="navigation">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		        	<a class="navbar-brand visible-xs" href="#">เมนู</a>
@@ -76,7 +81,7 @@ if (empty($_SESSION['name_user'])) {
 				<table id="example" class="display" style="font-size: 15px; padding-top:30px;" cellspacing="0" width="100%">
 			        <thead>
 			            <tr>
-			                <th width="170"><center>ลักษณะของนวัตกรรม</center></th>
+			                <th width="170" style="padding-bottom:45px;"><center>ลักษณะของนวัตกรรม</center></th>
 			                <th width="80" style="padding-bottom:45px;"><center>รหัสสืบค้น</center></th>
 			                <th width="70"><center>ปีที่ทำ</center></th>
 			                <th style="padding-bottom:45px;"><center>ชื่อเรื่องของนวัตกรรม/งานวิจัย</center></th>
@@ -87,7 +92,16 @@ if (empty($_SESSION['name_user'])) {
 			        </thead>
 			        <tbody>
 			        	<?php 
-			        	$sql = "SELECT * FROM innovation WHERE status = 1";
+			        	if ($typeSearch == 1) {
+			        		$sql = "SELECT * FROM innovation WHERE type = 1 AND status = 1";
+			        	} elseif ($typeSearch == 2) {
+			        		$sql = "SELECT * FROM innovation WHERE type = 2 AND status = 1";
+			        	} elseif ($typeSearch == 3) {
+			        		$sql = "SELECT * FROM innovation WHERE type = 3 AND status = 1";
+			        	} else {
+			        		$sql = "SELECT * FROM innovation WHERE type = 4 AND status = 1";
+			        	}
+
 			        	mysql_query("SET NAMES utf8");
 			        	$query = mysql_query($sql);
 
@@ -172,29 +186,13 @@ $(document).ready(function() {
         "sDom": '<"top"f>t<"bottom"p><"clear">'
     } );
 
+	$('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search" />' );
+    } );
+
     //List Filter Year
     var table = $('#example').DataTable();
-
-    table.columns().each( function ( colIdx ) {
-	    var select = $('<select class="form-control"><option value="">เลือกชนิด</option></select>')
-	        .appendTo(
-	            table.column([0]).header()
-	        )
-	        .on( 'change', function () {
-	            table
-	                .column([0])
-	                .search( $(this).val() )
-	                .draw();
-	        } );
-	    table
-	        .column([0])
-	        .cache( 'search' )
-	        .sort()
-	        .unique()
-	        .each( function ( d ) {	       
-	            select.append( $('<option value="'+d+'">'+d+'</option>') );
-	        } );
-	} );
 
 	table.columns().each( function ( colIdx ) {
 	    var select = $('<select class="form-control" style="width:100px;"><option value="">เลือกปี</option></select>')
