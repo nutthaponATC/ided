@@ -21,6 +21,12 @@
 	<script src="datatable/jquery-1.12.0.min.js"></script>      
 	<script type="text/javascript" src="datatable/jquery.dataTables.min.js"></script>
 	<link rel="stylesheet" href="datatable/jquery.dataTables.min.css" />  
+
+	<!-- slide -->
+	<script type="text/javascript" src="slide.js"></script>
+	<style>
+	.jssorb05{position:absolute}.jssorb05 div,.jssorb05 div:hover,.jssorb05 .av{position:absolute;width:16px;height:16px;overflow:hidden;cursor:pointer}.jssorb05 div{background-position:-7px -7px}.jssorb05 div:hover,.jssorb05 .av:hover{background-position:-37px -7px}.jssorb05 .av{background-position:-67px -7px}.jssorb05 .dn,.jssorb05 .dn:hover{background-position:-97px -7px}.jssora22l,.jssora22r{display:block;position:absolute;width:40px;height:58px;cursor:pointer;background:url('img/a22.png') center center no-repeat;overflow:hidden}.jssora22l{background-position:-10px -31px}.jssora22r{background-position:-70px -31px}.jssora22l:hover{background-position:-130px -31px}.jssora22r:hover{background-position:-190px -31px}.jssora22l.jssora22ldn{background-position:-250px -31px}.jssora22r.jssora22rdn{background-position:-310px -31px}.jssora22l.jssora22lds{background-position:-10px -31px;opacity:.3;pointer-events:none}.jssora22r.jssora22rds{background-position:-70px -31px;opacity:.3;pointer-events:none}
+	</style>
 </head>
 
 <body>
@@ -58,6 +64,24 @@
 	<div class="container" style="margin-top:-10px;">
 		<img src="image/head2.png" style="width:100%;">
 	</div>
+
+	<div class="container" style="width:1140px;">
+		<div id="jssor_1" style="position: relative; margin-left:-15px; top: 0px; width: 920px; height: 300px; overflow: hidden; visibility: hidden;">
+		<!-- Loading Screen -->
+			<div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 970px; height: 300px; overflow: hidden;">
+				<div data-p="225.00" style="display: none;">
+					<img data-u="image" src="image/purple.jpg" />
+				</div>
+				<div data-p="225.00" style="display: none;">
+					<img data-u="image" src="image/blue.jpg" />
+				</div>
+			</div>
+			
+			<!-- Arrow Navigator -->
+			<span data-u="arrowleft" class="jssora22l" style="top:0px;left:38px;width:40px;height:58px;" data-autocenter="2"></span>
+			<span data-u="arrowright" class="jssora22r" style="top:0px;right:8px;width:40px;height:58px;" data-autocenter="2"></span>
+		</div>
+	</div>	
 
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
@@ -163,8 +187,7 @@
 		<div class="container" style="color:#ffffff;">
 			<div class="col-md-3">
 				<br>
-				Copyright © <br>
-				2016 ข้อมูลนวัตกรรมทางการศึกษา
+				Copyright © 2016<br> ข้อมูลนวัตกรรมทางการศึกษา
 			</div>
 			<div class="col-md-5" style="text-align:center;">
 				<br>
@@ -175,11 +198,14 @@
 			</div>
 			<div class="col-md-3">
 				<br>
-				<i class="fa fa-phone" style="font-size:16px;"></i> โทรศัพท์/โทรสาร  <br>
+				<i class="fa fa-phone" style="font-size:16px;"></i> ติดต่อผู้ดูแลระบบ <br>
+				ผศ.ดร.ภาไพกาญจน์ อินทร์น้อย <br>
+				โทรศัพท์ 02-3298000 ต่อ 6061 
 			</div>
 		</div>
 	</div>
 
+	<script type="text/javascript">jssor_1_slider_init();</script>
 </body>
 </html>
 

@@ -258,8 +258,7 @@ if (empty($_SESSION['name_user'])) {
 		<div class="container" style="color:#ffffff;">
 			<div class="col-md-3">
 				<br>
-				Copyright © <br>
-				2016 ข้อมูลนวัตกรรมทางการศึกษา
+				Copyright © 2016<br> ข้อมูลนวัตกรรมทางการศึกษา
 			</div>
 			<div class="col-md-5" style="text-align:center;">
 				<br>
@@ -270,7 +269,9 @@ if (empty($_SESSION['name_user'])) {
 			</div>
 			<div class="col-md-3">
 				<br>
-				<i class="fa fa-phone" style="font-size:16px;"></i> โทรศัพท์/โทรสาร  <br>
+				<i class="fa fa-phone" style="font-size:16px;"></i> ติดต่อผู้ดูแลระบบ <br>
+				ผศ.ดร.ภาไพกาญจน์ อินทร์น้อย <br>
+				โทรศัพท์ 02-3298000 ต่อ 6061 
 			</div>
 		</div>
 	</div>
