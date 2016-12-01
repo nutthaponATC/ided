@@ -70,10 +70,13 @@
 		<!-- Loading Screen -->
 			<div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 970px; height: 300px; overflow: hidden;">
 				<div data-p="225.00" style="display: none;">
-					<img data-u="image" src="image/purple.jpg" />
+					<img data-u="image" src="image/1-01.png" />
 				</div>
 				<div data-p="225.00" style="display: none;">
-					<img data-u="image" src="image/blue.jpg" />
+					<img data-u="image" src="image/2-01.png" />
+				</div>
+				<div data-p="225.00" style="display: none;">
+					<img data-u="image" src="image/3-01.png" />
 				</div>
 			</div>
 			
