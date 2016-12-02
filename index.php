@@ -69,15 +69,18 @@
 		<div id="jssor_1" style="position: relative; margin-left:-15px; top: 0px; width: 920px; height: 300px; overflow: hidden; visibility: hidden;">
 		<!-- Loading Screen -->
 			<div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 970px; height: 300px; overflow: hidden;">
-				<div data-p="225.00" style="display: none;">
-					<img data-u="image" src="image/1-01.png" />
-				</div>
-				<div data-p="225.00" style="display: none;">
-					<img data-u="image" src="image/2-01.png" />
-				</div>
-				<div data-p="225.00" style="display: none;">
-					<img data-u="image" src="image/3-01.png" />
-				</div>
+
+				<?php 
+				$sql = "SELECT * FROM banner";
+				$query = mysql_query($sql);
+				while ($data = mysql_fetch_array($query)) {
+					echo "<div data-p='225.00' style='display: none;'>";
+						echo "<img data-u='image' src='image/".$data['banner']."' />";
+					echo "</div>";
+				}
+
+				 ?>
+
 			</div>
 			
 			<!-- Arrow Navigator -->
