@@ -60,6 +60,7 @@ if (empty($_SESSION['name_user'])) {
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
 						<li><a href="main.php">จัดการข้อมูล</a></li>
 						<li><a href="add.php">เพิ่มข้อมูล</a></li>
+						<li><a href="banner.php">เพิ่มรูปนวัตกรรม</a></li>
 						<li><a href="../index.php">กลับหน้าหลัก</a></li>
 		            </ul>
 		        </div>
@@ -73,7 +74,7 @@ if (empty($_SESSION['name_user'])) {
 
 	<div class="container" style="margin-top:10px;">
 		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
-			<form action="add_process.php" method="post" enctype="multipart/form-data">
+			<form action="add_banner.php" method="post" enctype="multipart/form-data">
 			<div class="col-md-10">
 				<h3>รูปนวัตกรรม</h3>
 
@@ -81,16 +82,19 @@ if (empty($_SESSION['name_user'])) {
 				$sql = "SELECT * FROM banner";
 				$query = mysql_query($sql);
 				while ($data = mysql_fetch_array($query)) {
-					echo "<div class='col-md-12'>";
-						echo "<img data-u='image' src='image/".$data['banner']."' />";
+					echo "<div class='col-md-12' style='margin-top:50px;'>";
+						echo "<img data-u='image' width='100%' height='300px' src='../image/".$data['banner']."' />";
+						echo "<br><a href='remove_banner.php?id_banner=".$data['id_banner']."'> ลบรูปนวัตกรรม</a>";
 					echo "</div>";
 				}
 
 				 ?>
 
-				<center><h4>ภาพนวัตกรรม</h4></center>
+				<div class="col-md-12" style="margin-top:50px;"></div>
+
+				<center><h4>เพิ่มรูปนวัตกรรม</h4></center>
 				<center>
-					<img id="image" style="margin-left:20px;" height="150" width="130"/>
+					<img id="image" height="300" width="100%"/>
 				</center>
 				<br>
 				<input class="form-control" type="file" id="files" name="image">

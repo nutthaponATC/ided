@@ -38,7 +38,7 @@ $id_inno = $_GET['id_inno'];
 	</div>
 
 	<div class="container">
-		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px;" role="navigation">
+		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);" role="navigation">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		        	<a class="navbar-brand visible-xs" href="#">เมนู</a>
@@ -59,12 +59,12 @@ $id_inno = $_GET['id_inno'];
 	</div>
 
 	<div class="container" style="margin-top:-10px;">
-		<img src="image/head2.png" style="width:100%;">
+		<img src="image/head2.png" style="width:100%;  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 	</div>
 
-	<div class="container" style="margin-top:10px;">
-		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
-			<div class="col-md-10" style="font-size: 120%;">
+	<div class="container">
+		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%;padding-bottom:100px;">
+			<div class="col-md-10" style="font-size: 120%; padding-top:50px;  margin-top:5%;">
 				<?php 
 				$sql = "SELECT * FROM innovation WHERE id = $id_inno;";
 				mysql_query("SET NAMES utf8");
@@ -174,12 +174,12 @@ $id_inno = $_GET['id_inno'];
 			
 			 ?>
 
-			<div class="col-md-2" style="height:500px;">
+			<div class="col-md-2" style="height:100%; background-color:whitesmoke; position:absolute; right:0; padding-top:5%;">
 				<div>
-					<div style="float:left; width:50px;">
+					<div style="float:left; width:50px; margin-top:20px;">
 						<img src="image/bgr_h2.png">
 					</div>
-					<div style="float:left; width:100px; margin-top:-20px;">
+					<div style="float:left; width:100px;">
 						<h3>หมวดหมู่</h3>						
 						<a href="type.php?type=1">
 							<p>งานวิจัย (<?php echo $type[0]; ?>)</p>
@@ -211,7 +211,7 @@ $id_inno = $_GET['id_inno'];
 		</div>
 	</div>
 
-	<div class="container" style="width:1140px; background-color: rgba(249, 86, 11, 1); text-align:center; padding-bottom:20px;">
+	<div class="container" style="width:1140px; background-color: rgba(249, 86, 11, 1); text-align:center; padding-bottom:20px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 		<div class="container" style="color:#ffffff;">
 			<div class="col-md-3">
 				<br>

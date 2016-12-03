@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="container">
-		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px;" role="navigation">
+		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);" role="navigation">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		        	<a class="navbar-brand visible-xs" href="#">เมนู</a>
@@ -62,10 +62,10 @@
 	</div>
 
 	<div class="container" style="margin-top:-10px;">
-		<img src="image/head2.png" style="width:100%;">
+		<img src="image/head2.png" style="width:100%; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 	</div>
 
-	<div class="container" style="width:1140px;">
+	<div class="container" style="width:1140px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 		<div id="jssor_1" style="position: relative; margin-left:-15px; top: 0px; width: 920px; height: 300px; overflow: hidden; visibility: hidden;">
 		<!-- Loading Screen -->
 			<div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 970px; height: 300px; overflow: hidden;">
@@ -90,8 +90,8 @@
 	</div>	
 
 	<div class="container" style="margin-top:10px;">
-		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
-			<div class="col-md-10">
+		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-bottom:100px;">
+			<div class="col-md-10" style="padding-top:5%;">
 				<table id="example" class="display" style="font-size: 15px; padding-top:30px;" cellspacing="0" width="100%">
 			        <thead>
 			            <tr>
@@ -152,7 +152,7 @@
 			
 			 ?>
 
-			<div class="col-md-2" style="height:500px;">
+			<div class="col-md-2" style="height:100%; background-color:whitesmoke; position:absolute; right:0; padding-top:5%;">
 				<div>
 					<div style="float:left; width:50px;">
 						<img src="image/bgr_h2.png">
@@ -189,7 +189,7 @@
 		</div>
 	</div>
 
-	<div class="container" style="width:1140px; background-color: rgba(249, 86, 11, 1); text-align:center; padding-bottom:20px;">
+	<div class="container" style="width:1140px; background-color: rgba(249, 86, 11, 1); text-align:center; padding-bottom:20px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 		<div class="container" style="color:#ffffff;">
 			<div class="col-md-3">
 				<br>

@@ -49,7 +49,7 @@ if ($typeSearch == 1) {
 	</div>
 
 	<div class="container">
-		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px;" role="navigation">
+		<div id="custom-bootstrap-menu" class="navbar navbar-default" style="border-style: none; z-index: 900; width:100%+20px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);" role="navigation">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		        	<a class="navbar-brand visible-xs" href="#">เมนู</a>
@@ -70,12 +70,12 @@ if ($typeSearch == 1) {
 	</div>
 
 	<div class="container" style="margin-top:-10px;">
-		<img src="image/head2.png" style="width:100%;">
+		<img src="image/head2.png" style="width:100%; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 	</div>
 
 	<div class="container" style="margin-top:10px;">
-		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-top:50px; padding-bottom:100px;">
-			<h2 style="padding-left:20px; margin-top:-20px; color: rgba(249, 86, 11, 1);">หมวดหมู่ <?php echo $typeSearchType; ?></h2>
+		<div class="col-md-12" style="background-color:#ffffff; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); height:100%; padding-bottom:100px;">
+			<h2 style="padding-left:20px; color: rgba(249, 86, 11, 1);">หมวดหมู่ <?php echo $typeSearchType; ?></h2>
 			<div class="col-md-10">
 				<table id="example" class="display" style="font-size: 15px; padding-top:30px;" cellspacing="0" width="100%">
 			        <thead>
@@ -146,7 +146,7 @@ if ($typeSearch == 1) {
 			
 			 ?>
 
-			<div class="col-md-2" style="height:500px;">
+			<div class="col-md-2" style="height:100%; background-color:whitesmoke; position:absolute; right:0; padding-top:5%; margin-top:-63px;">
 				<div>
 					<div style="float:left; width:50px;">
 						<img src="image/bgr_h2.png">
@@ -183,7 +183,7 @@ if ($typeSearch == 1) {
 		</div>
 	</div>
 
-	<div class="container" style="width:1140px; background-color: rgba(249, 86, 11, 1); text-align:center; padding-bottom:20px;">
+	<div class="container" style="width:1140px; background-color: rgba(249, 86, 11, 1); text-align:center; padding-bottom:20px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);">
 		<div class="container" style="color:#ffffff;">
 			<div class="col-md-3">
 				<br>

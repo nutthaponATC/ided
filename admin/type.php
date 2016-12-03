@@ -64,6 +64,7 @@ if ($typeSearch == 1) {
 		            <ul class="nav navbar-nav navbar-left" id="menu-main">
 						<li><a href="main.php">จัดการข้อมูล</a></li>
 						<li><a href="add.php">เพิ่มข้อมูล</a></li>
+						<li><a href="banner.php">เพิ่มรูปนวัตกรรม</a></li>
 						<li><a href="../index.php">กลับหน้าหลัก</a></li>
 		            </ul>
 		        </div>
